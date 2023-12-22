@@ -20,7 +20,18 @@
     padding: 0;
     box-sizing: border-box;
   }
+  body, html, #app {
+    display: flex;
+    flex-direction: column;
+    flex: 1 1 auto;
+    width: 100%;
+    height: 100%;
+  }
   .App{
+    display: flex;
+    flex-direction: column;
+    flex: 1 1 auto;
+    width: 100%;
     padding: 2rem;
   }
   .App > .title {
