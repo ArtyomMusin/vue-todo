@@ -7,6 +7,7 @@ export const postModule = {
         limit: 10,
         page: 1,
         totalPages: 0,
+        currentPost: '',
         loadedPages: [],
         sortOptions: [
             { value: 'title', name: 'By name' },
@@ -54,6 +55,9 @@ export const postModule = {
         },
         setTotalPages (state, payload) {
             state.totalPages = payload
+        },
+        setCurrentPost (state, payload) {
+            state.currentPost = payload
         }
     },
     actions: {
@@ -61,6 +65,15 @@ export const postModule = {
             try {
                 return new Promise(resolve => setTimeout(async () => {
                     resolve(await fetch(`https://jsonplaceholder.typicode.com/posts?_limit=${state.limit}&_page=${state.page}`))
+                }, 500))
+            } catch (e) {
+                console.error(e)
+            }
+        },
+        async fetchPostById ({ state }) {
+            try {
+                return new Promise(resolve => setTimeout(async () => {
+                    resolve(await fetch(`https://jsonplaceholder.typicode.com/posts?id=${state.currentPost}`))
                 }, 500))
             } catch (e) {
                 console.error(e)
